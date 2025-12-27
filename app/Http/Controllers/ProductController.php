@@ -24,10 +24,15 @@ class ProductController extends Controller
         $products = Product::where('title', 'LIKE', "%{$name}%")->get();
         return response()->json($products, 200);
     }
+public function store(Request $request) {
+    $data = $request->validate([
+        'title' => 'required',
+        'price' => 'required',
+        'description' => 'required',
+        'image' => 'required',
+        'category' => 'required',
+    ]);
 
-    // 4. Add Product (عشان تملأ بيانات)
-    public function store(Request $request) {
-        $product = Product::create($request->all());
-        return response()->json($product, 201);
-    }
+    return Product::create($data);
+}
 }
