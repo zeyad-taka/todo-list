@@ -2,24 +2,30 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Category;
 
-class DatabaseSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // إضافة بيانات تجريبية مع مراعاة وجود عمود description
+        Category::create([
+            'name' => 'Electronics',
+            'description' => 'All kinds of electronic devices and gadgets'
+        ]);
 
-        User::factory()->create([
-            'name' => 'zeyad-taka',
-            'email' => 'zeyadibrahim184@gmail.com',
+        Category::create([
+            'name' => 'Fashion',
+            'description' => 'Latest trends in clothes and accessories'
+        ]);
+
+        Category::create([
+            'name' => 'Home & Kitchen',
+            'description' => 'Furniture and kitchen appliances'
         ]);
     }
 }
